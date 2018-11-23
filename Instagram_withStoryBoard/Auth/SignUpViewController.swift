@@ -15,7 +15,7 @@ import FirebaseAuth
 class SignUpViewController: UIViewController {
     
     var selectedImage: UIImage?
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -37,18 +37,6 @@ class SignUpViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        clean()
-    }
-    
-    fileprivate func clean() {
-        emailTextField.text = ""
-        passwordTextField.text = ""
-        nameTextField.text = ""
-        profileImage.image = #imageLiteral(resourceName: "icons8-user-male-480")
     }
     
     fileprivate func saveDataBase() {
@@ -95,7 +83,7 @@ class SignUpViewController: UIViewController {
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
     }
-
+    
     fileprivate func handleTextField() {
         nameTextField.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
@@ -111,13 +99,9 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SignUp_Label.isEnabled = false
-        handleTextField()
-        
         tapGestureForUIImageView()
-  
+        handleTextField()
     }
-    
-
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

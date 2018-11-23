@@ -75,7 +75,9 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New to instagram? Sign Up."/>
                                 <connections>
-                                    <segue destination="9q7-Sz-0Jo" kind="show" id="4Io-7l-10i"/>
+                                    <segue destination="9q7-Sz-0Jo" kind="popoverPresentation" popoverAnchorView="3Cz-I2-srQ" id="Duq-sK-1k9">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,7 +214,7 @@
                         <outlet property="nameTextField" destination="vuI-ex-dOa" id="8ne-b5-0f3"/>
                         <outlet property="passwordTextField" destination="HLN-V3-rpA" id="p1X-Kz-cIk"/>
                         <outlet property="profileImage" destination="rja-UT-Jil" id="iiU-el-JDR"/>
-                        <segue destination="FHE-z2-gpV" kind="presentation" identifier="TabSwitcher_id" id="4bB-Pn-z8x"/>
+                        <segue destination="FHE-z2-gpV" kind="presentation" identifier="TabSwitcher_id" id="ikU-OE-4qV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdw-HL-9A8" sceneMemberID="firstResponder"/>
@@ -232,6 +234,6 @@
         <image name="icons8-user-male-480" width="360" height="360"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eiP-QX-2vA"/>
+        <segue reference="ikU-OE-4qV"/>
     </inferredMetricsTieBreakers>
 </document>

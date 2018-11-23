@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="50" id="qrv-dX-9aw"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Share"/>
                                 <connections>
                                     <action selector="share_button:" destination="0vo-r6-fcv" eventType="touchUpInside" id="qIv-Cy-ZKi"/>
                                 </connections>

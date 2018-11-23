@@ -21,6 +21,16 @@ class PostCell: UITableViewCell {
         }
     }
     
+    var user: Users? {
+        didSet {
+            username.text = user?.username
+            if let photoString = user?.profile_image {
+                let photoUrl = URL(string: photoString)
+                self.profileImage.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Profile_Selected"))
+            }
+        }
+    }
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var postImage: UIImageView!
