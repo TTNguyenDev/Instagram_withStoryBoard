@@ -15,6 +15,9 @@
 		B504117521A663EF0052BD51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B504117421A663EF0052BD51 /* GoogleService-Info.plist */; };
 		B50617BB21D74FB700FCDEA1 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50617BA21D74FB700FCDEA1 /* ImageCell.swift */; };
 		B50617BD21D7625900FCDEA1 /* StorageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50617BC21D7625900FCDEA1 /* StorageApi.swift */; };
+		B50617BF21D7717100FCDEA1 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50617BE21D7717100FCDEA1 /* AuthApi.swift */; };
+		B50617C221D7765200FCDEA1 /* CustomAlert .swift in Sources */ = {isa = PBXBuildFile; fileRef = B50617C121D7765200FCDEA1 /* CustomAlert .swift */; };
+		B50617C421D77AFD00FCDEA1 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50617C321D77AFD00FCDEA1 /* CacheImage.swift */; };
 		B51CD3F421A7D7E90058AF96 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CD3F321A7D7E90058AF96 /* Users.swift */; };
 		B51F782021D606EC006890EA /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F781F21D606EC006890EA /* HeaderProfileCollectionReusableView.swift */; };
 		B51F782221D61E1C006890EA /* MyPostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F782121D61E1C006890EA /* MyPostApi.swift */; };
@@ -23,7 +26,6 @@
 		B53ED9BA21A6702100C82C2A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ED9B921A6702100C82C2A /* Photos.swift */; };
 		B53ED9BC21A6704800C82C2A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ED9BB21A6704800C82C2A /* Notification.swift */; };
 		B53ED9BE21A6705400C82C2A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ED9BD21A6705400C82C2A /* Account.swift */; };
-		B54E4EE921A993AE006CE40B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EE821A993AE006CE40B /* Config.swift */; };
 		B54E4EEB21A99494006CE40B /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EEA21A99494006CE40B /* PostApi.swift */; };
 		B54E4EED21A99606006CE40B /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EEC21A99606006CE40B /* UserApi.swift */; };
 		B54E4EEF21A99878006CE40B /* CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EEE21A99878006CE40B /* CommentApi.swift */; };
@@ -57,6 +59,9 @@
 		B504117421A663EF0052BD51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B50617BA21D74FB700FCDEA1 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B50617BC21D7625900FCDEA1 /* StorageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageApi.swift; sourceTree = "<group>"; };
+		B50617BE21D7717100FCDEA1 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
+		B50617C121D7765200FCDEA1 /* CustomAlert .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomAlert .swift"; sourceTree = "<group>"; };
+		B50617C321D77AFD00FCDEA1 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
 		B51CD3F321A7D7E90058AF96 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		B51F781F21D606EC006890EA /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		B51F782121D61E1C006890EA /* MyPostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostApi.swift; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		B53ED9B921A6702100C82C2A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		B53ED9BB21A6704800C82C2A /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B53ED9BD21A6705400C82C2A /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		B54E4EE821A993AE006CE40B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B54E4EEA21A99494006CE40B /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 		B54E4EEC21A99606006CE40B /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		B54E4EEE21A99878006CE40B /* CommentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentApi.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 		B504115F21A653C50052BD51 /* Instagram_withStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B50617C021D7763300FCDEA1 /* Helper */,
 				B54E4EE721A99399006CE40B /* API */,
 				B5A8BB4421A6D471009DB605 /* Others */,
 				B53ED9B421A66E5700C82C2A /* StoryBoard */,
@@ -149,6 +154,15 @@
 				B504116C21A653C60052BD51 /* Info.plist */,
 			);
 			path = Instagram_withStoryBoard;
+			sourceTree = "<group>";
+		};
+		B50617C021D7763300FCDEA1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B50617C121D7765200FCDEA1 /* CustomAlert .swift */,
+				B50617C321D77AFD00FCDEA1 /* CacheImage.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B53ED9B421A66E5700C82C2A /* StoryBoard */ = {
@@ -190,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				B54E4EF021A99943006CE40B /* Api.swift */,
-				B54E4EE821A993AE006CE40B /* Config.swift */,
 				B54E4EF221A99FF3006CE40B /* Post_Comment.swift */,
 				B54E4EEA21A99494006CE40B /* PostApi.swift */,
 				B51F782121D61E1C006890EA /* MyPostApi.swift */,
@@ -198,6 +211,7 @@
 				B503BD7121AA603000E1D4F0 /* LikeApi.swift */,
 				B54E4EEE21A99878006CE40B /* CommentApi.swift */,
 				B50617BC21D7625900FCDEA1 /* StorageApi.swift */,
+				B50617BE21D7717100FCDEA1 /* AuthApi.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -382,24 +396,26 @@
 				B53ED9BA21A6702100C82C2A /* Photos.swift in Sources */,
 				B54E4EF321A99FF3006CE40B /* Post_Comment.swift in Sources */,
 				B51F782021D606EC006890EA /* HeaderProfileCollectionReusableView.swift in Sources */,
+				B50617C421D77AFD00FCDEA1 /* CacheImage.swift in Sources */,
 				B504116321A653C50052BD51 /* SignInViewController.swift in Sources */,
 				B50617BD21D7625900FCDEA1 /* StorageApi.swift in Sources */,
 				B51F782221D61E1C006890EA /* MyPostApi.swift in Sources */,
 				B50617BB21D74FB700FCDEA1 /* ImageCell.swift in Sources */,
 				B54E4EEF21A99878006CE40B /* CommentApi.swift in Sources */,
 				B54E4EF121A99943006CE40B /* Api.swift in Sources */,
-				B54E4EE921A993AE006CE40B /* Config.swift in Sources */,
 				B53ED9B821A6701600C82C2A /* Discover.swift in Sources */,
 				B5C2175721A7F6020020F9BB /* Comment.swift in Sources */,
 				B53ED9BC21A6704800C82C2A /* Notification.swift in Sources */,
 				B5CE6C8921A666CE00132B6F /* Home.swift in Sources */,
 				B54E4EED21A99606006CE40B /* UserApi.swift in Sources */,
 				B5A8BB4621A6DA24009DB605 /* PostCell.swift in Sources */,
+				B50617C221D7765200FCDEA1 /* CustomAlert .swift in Sources */,
 				B54E4EEB21A99494006CE40B /* PostApi.swift in Sources */,
 				B53ED9BE21A6705400C82C2A /* Account.swift in Sources */,
 				B5C2175321A7ED660020F9BB /* CommentViewController.swift in Sources */,
 				B5CE6C8B21A666F500132B6F /* SignUpViewController.swift in Sources */,
 				B503BD7221AA603000E1D4F0 /* LikeApi.swift in Sources */,
+				B50617BF21D7717100FCDEA1 /* AuthApi.swift in Sources */,
 				B5C2175521A7F5E70020F9BB /* CommentCell.swift in Sources */,
 				B504116121A653C50052BD51 /* AppDelegate.swift in Sources */,
 				B5A8BB4821A6E7F1009DB605 /* Posts.swift in Sources */,
