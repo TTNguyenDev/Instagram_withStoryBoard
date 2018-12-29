@@ -22,28 +22,22 @@ class Home: UIViewController, UITableViewDataSource {
     fileprivate func loadPost() {
         indicator.startAnimating()
         SVProgressHUD.setBackgroundColor(.clear)
-        Database.database().reference().child("posts").observe(.childAdded) { (snapShot) in
-            if let dictionary = snapShot.value as? NSDictionary {
-                let newPost = Posts.transformPostPhoto(dictionary: dictionary, key: snapShot.key)
-                self.fetchUser(uid: newPost.uid!, completed: {
-                    self.posts.append(newPost)
-                    self.indicator.stopAnimating()
-                    self.tableView1.reloadData()
-                })
-            }
+        Api.post.observe { (newPost) in
+            self.fetchUser(uid: newPost.uid!, completed: {
+                self.posts.append(newPost)
+                self.indicator.stopAnimating()
+                self.tableView1.reloadData()
+            })
         }
     }
     
     fileprivate func fetchUser(uid: String,completed: @escaping () -> Void) {
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapShot) in
-            if let dictionary = snapShot.value as? NSDictionary {
-                let user = Users.transformUser(dictionary: dictionary)
-                self.users.append(user)
-                completed()
-            }
+        Api.user.observe(withID: uid) { (user) in
+            self.users.append(user)
+            completed()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -54,15 +48,27 @@ class Home: UIViewController, UITableViewDataSource {
         let user = users[indexPath.row]
         cell.post = post
         cell.user = user
+        cell.homeVC = self
         return cell
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentSegue" {
+            let commentVC = segue.destination as!CommentViewController
+            let postId = sender  as! String
+            commentVC.postId = postId
+        }
+    }
+    
+    fileprivate func setupTableView() {
         tableView1.rowHeight = UITableView.automaticDimension
         tableView1.estimatedRowHeight = 300
         tableView1.dataSource = self
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
         indicator.hidesWhenStopped = true
         loadPost()
     }
