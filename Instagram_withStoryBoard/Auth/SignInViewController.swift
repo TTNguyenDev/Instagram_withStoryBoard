@@ -11,6 +11,7 @@ import FirebaseAuth
 import SVProgressHUD
 
 class SignInViewController: UIViewController {
+    //Testing smartGit to clone project
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
