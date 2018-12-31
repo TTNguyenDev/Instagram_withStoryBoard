@@ -22,13 +22,10 @@ class Account: UIViewController {
     }
     
     fileprivate func AppendImageArray() -> UInt {
-        return Api.myPost.MYPOST_REF.child(Api.user.CURRENT_USER!.uid).observe(.childAdded) { (snapshot) in
-            print(snapshot.key)
-            Api.post.observePostWithId(id: snapshot.key, completion: { (post) in
-                self.mPost.append(post)
-                self.collectionView.reloadData()
-            })
-        }
+        return Api.myPost.getPostFromServer(completion: { (post) in
+            self.mPost.append(post)
+            self.collectionView.reloadData()
+        })
     }
     
     override func viewDidLoad() {

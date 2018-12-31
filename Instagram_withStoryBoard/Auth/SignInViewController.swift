@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func SignIn_Button(_ sender: Any) {
         CustomAlert.loadingAnimation()
-        Api.auth.signOut(onFail: { (error) in
+        Api.auth.signIn(withEmail: emailTextField.text!, password: PasswordTextField.text!, onFail: { (error) in
             CustomAlert.showError(withMessage: error)
             return
         }) {

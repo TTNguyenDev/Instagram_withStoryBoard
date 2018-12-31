@@ -22,4 +22,13 @@ class MyPostApi {
             
         }
     }
+    
+    func getPostFromServer(completion: @escaping (Posts) -> Void) -> UInt {
+        return MYPOST_REF.child(Api.user.CURRENT_USER!.uid).observe(.childAdded) { (snapshot) in
+            print(snapshot.key)
+            Api.post.observePostWithId(id: snapshot.key, completion: { (post) in
+                completion(post)
+            })
+        }
+    }
 }

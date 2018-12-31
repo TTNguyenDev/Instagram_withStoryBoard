@@ -12,7 +12,6 @@ struct Api {
     static let post = PostApi()
     static let user = UserApi()
     static let comment = CommentApi()
-    static let post_comment = Post_Comment()
     static let like = LikeApi()
     static let myPost = MyPostApi()
     static let storage = StorageApi()

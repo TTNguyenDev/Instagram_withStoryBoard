@@ -28,4 +28,13 @@ class PostApi {
             }
         }
     }
+    
+    func likeOfPost(post: Posts, completion: @escaping (Posts) -> Void) {
+        POST_REF.child(post.id!).observeSingleEvent(of: .value) { (snapShot) in
+            if let dictionary = snapShot.value as? [String: Any] {
+                let posts = Posts.transformPostPhoto(dictionary: dictionary as NSDictionary, key: snapShot.key)
+                completion(posts)
+            }
+        }
+    }
 }

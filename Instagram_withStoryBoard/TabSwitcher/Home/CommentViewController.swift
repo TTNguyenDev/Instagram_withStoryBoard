@@ -22,27 +22,10 @@ class CommentViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func sendButton(_ sender: Any) {
-        let commentRef = Api.comment.COMMENT_REF
-        let newCommentId = commentRef.childByAutoId().key
-        let newCommentRef = commentRef.child(newCommentId!)
-        
-        let currentId = Api.user.CURRENT_USER?.uid
-        newCommentRef.setValue(["uid": currentId, "comment": commentText.text!]) { (error, refs) in
-            if error != nil {
-                CustomAlert.showError(withMessage:  (error?.localizedDescription)!)
-                return
-            }
-            
-            //recognize which post has comment
-            let postComment = Api.post_comment.POST_COMMENT_REF.child(self.postId).child(newCommentId!)
-            postComment.setValue(true, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    CustomAlert.showError(withMessage: (error?.localizedDescription)!)
-                    return
-                }
-            })
-            self.empty()
+        Api.comment.sendMessToServer(mess: commentText.text!, postId: self.postId) { (error) in
+            CustomAlert.showError(withMessage: error)
         }
+        self.empty()
     }
     
     fileprivate func empty() {
@@ -63,12 +46,10 @@ class CommentViewController: UIViewController, UITableViewDataSource {
     }
     
     fileprivate func loadComments() {
-        Api.post_comment.POST_COMMENT_REF.child(self.postId).observe(.childAdded) { (snapShot) in
-            Api.comment.observe(withKey: snapShot.key, completion: { (newComment) in
-                self.fetchUser(uid: newComment.uid!, completed: {
-                    self.comments.append(newComment)
-                    self.tableView1.reloadData()
-                })
+        Api.comment.loadComment(postId: self.postId) { (newComment) in
+            self.fetchUser(uid: newComment.uid!, completed: {
+                self.comments.append(newComment)
+                self.tableView1.reloadData()
             })
         }
     }
