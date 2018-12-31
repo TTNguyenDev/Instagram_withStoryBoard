@@ -14,10 +14,10 @@
             <objects>
                 <tabBarController storyboardIdentifier="switcher" id="bau-ja-DJ8" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="WtX-il-CNN"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F9M-mT-dbg">
+                    <tabBar key="tabBar" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="F9M-mT-dbg" customClass="TabSwitcher" customModule="Instagram_withStoryBoard" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="tMU-sm-SuQ" kind="relationship" relationship="viewControllers" id="beq-hS-b5S"/>

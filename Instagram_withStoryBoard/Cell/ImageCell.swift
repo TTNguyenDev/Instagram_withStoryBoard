@@ -7,7 +7,19 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ImageCell: UICollectionViewCell {
+    @IBOutlet var images: UIImageView!
+    var post: Posts? {
+        didSet {
+            updateView()
+        }
+    }
     
+    func updateView() {
+        if let photoUrl = post?.imageUrl {
+            CacheImage.cacheImage(withUrl: photoUrl, imageContainer: images)
+        }
+    }
 }

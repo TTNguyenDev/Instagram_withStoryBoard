@@ -7,34 +7,67 @@
 //
 
 import UIKit
-import FirebaseAuth
-import SVProgressHUD
 
 class Account: UIViewController {
-
+    
+    var mPost: [Posts] = []
+    
+    @IBOutlet var collectionView: UICollectionView!
     @IBAction func logoutButton(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError {
-            SVProgressHUD.showError(withStatus: logoutError.localizedDescription)
+        Api.auth.signOut(onFail: { (error) in
+            CustomAlert.showError(withMessage: error)
+        }) {
+            self.dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    fileprivate func AppendImageArray() -> UInt {
+        return Api.myPost.MYPOST_REF.child(Api.user.CURRENT_USER!.uid).observe(.childAdded) { (snapshot) in
+            print(snapshot.key)
+            Api.post.observePostWithId(id: snapshot.key, completion: { (post) in
+                self.mPost.append(post)
+                self.collectionView.reloadData()
+            })
+        }
     }
-    */
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        AppendImageArray()        
+    }
+}
 
+extension Account: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return mPost.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageCell
+        let post = mPost[indexPath.row]
+        cell.post = post
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfile", for: indexPath) as! HeaderProfileCollectionReusableView
+        headerViewCell.updateView()
+        return headerViewCell
+    }
+}
+
+extension Account: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3 - 1 , height:  collectionView.frame.width / 3 - 1)
+    }
 }

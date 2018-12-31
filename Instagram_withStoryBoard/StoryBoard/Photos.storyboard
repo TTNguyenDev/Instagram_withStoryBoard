@@ -58,15 +58,20 @@
                                     <action selector="share_button:" destination="0vo-r6-fcv" eventType="touchUpInside" id="qIv-Cy-ZKi"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hL9-YG-FD1">
+                                <rect key="frame" x="197" y="465" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hL9-YG-FD1" firstAttribute="centerX" secondItem="HzY-Pg-hMX" secondAttribute="centerX" id="0Dv-hE-QdL"/>
                             <constraint firstItem="HGJ-6c-uCu" firstAttribute="top" secondItem="HzY-Pg-hMX" secondAttribute="top" id="6Il-LL-KJf"/>
                             <constraint firstItem="HGJ-6c-uCu" firstAttribute="trailing" secondItem="HzY-Pg-hMX" secondAttribute="trailing" id="I1A-V0-kPj"/>
                             <constraint firstItem="HzY-Pg-hMX" firstAttribute="bottom" secondItem="Bfh-kM-C2S" secondAttribute="bottom" constant="8" id="Iwb-hX-jYm"/>
                             <constraint firstItem="Bfh-kM-C2S" firstAttribute="leading" secondItem="HzY-Pg-hMX" secondAttribute="leading" constant="8" id="MUD-W8-IeZ"/>
                             <constraint firstItem="HzY-Pg-hMX" firstAttribute="trailing" secondItem="Bfh-kM-C2S" secondAttribute="trailing" constant="8" id="Xdo-lV-Khn"/>
                             <constraint firstItem="HGJ-6c-uCu" firstAttribute="leading" secondItem="HzY-Pg-hMX" secondAttribute="leading" id="agb-5L-tx1"/>
+                            <constraint firstItem="hL9-YG-FD1" firstAttribute="centerY" secondItem="HzY-Pg-hMX" secondAttribute="centerY" id="qkI-Te-DVC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HzY-Pg-hMX"/>
                     </view>
@@ -82,6 +87,7 @@
                         <outlet property="Share_Label" destination="Bfh-kM-C2S" id="JZa-iM-a9r"/>
                         <outlet property="caption" destination="EBc-Tj-soo" id="b4q-ZL-PhV"/>
                         <outlet property="imagePost" destination="nsa-lA-vsU" id="Kg9-VP-I3i"/>
+                        <outlet property="indicator" destination="hL9-YG-FD1" id="tV2-41-R0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g7-he-bx6" userLabel="First Responder" sceneMemberID="firstResponder"/>

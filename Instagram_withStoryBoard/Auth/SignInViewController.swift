@@ -7,25 +7,21 @@
 //
 
 import UIKit
-import FirebaseAuth
-import SVProgressHUD
 
 class SignInViewController: UIViewController {
-    //Testing smartGit to clone project
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var SignIn_Outlet: UIButton!
+    
     @IBAction func SignIn_Button(_ sender: Any) {
-        SVProgressHUD.show()
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: PasswordTextField.text!) { (user, error) in
-            if error != nil {
-                SVProgressHUD.showError(withStatus: error?.localizedDescription)
-                return
-            }
+        CustomAlert.loadingAnimation()
+        Api.auth.signOut(onFail: { (error) in
+            CustomAlert.showError(withMessage: error)
+            return
+        }) {
             self.performSegue(withIdentifier: "signIn_id", sender: nil)
-            SVProgressHUD.dismiss()
-            
+            CustomAlert.stopAnimation()
         }
     }
     
@@ -35,7 +31,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
+        if Api.user.CURRENT_USER != nil {
             performSegue(withIdentifier: "signIn_id", sender: nil)
         }
         clean()
@@ -64,7 +60,5 @@ class SignInViewController: UIViewController {
         SignIn_Outlet.isEnabled = false
         handleTextField()
     }
-
-
 }
 

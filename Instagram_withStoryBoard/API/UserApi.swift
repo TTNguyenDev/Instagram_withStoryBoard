@@ -12,6 +12,13 @@ import FirebaseAuth
 
 class UserApi {
     let USER_REF = Database.database().reference().child("users")
+    let AUTH = Auth.auth()
+    var CURRENT_USER: User? {
+        if let current = Auth.auth().currentUser {
+            return current
+        }
+        return nil
+    }
     
     func observe(withID id: String,completion: @escaping (Users) -> Void) {
         USER_REF.child(id).observeSingleEvent(of: .value) { (snapShot) in
@@ -22,13 +29,7 @@ class UserApi {
         }
     }
     
-    var CURRENT_USER: User? {
-        if let current = Auth.auth().currentUser {
-            return current
-        }
-        return nil
-    }
-    
+
     func observeCurrentUser(completion: @escaping (Users) -> Void) {
         let id = Auth.auth().currentUser?.uid
         USER_REF.child(id!).observeSingleEvent(of: .value) { (snapShot) in

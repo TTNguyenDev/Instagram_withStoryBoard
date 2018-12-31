@@ -13,6 +13,9 @@ class Posts {
     var imageUrl: String?
     var uid: String?
     var id: String?
+    var likesCount: Int?
+    var likes: Dictionary<String, Any>?
+    var isLiked: Bool?
 }
 
 extension Posts {
@@ -22,6 +25,14 @@ extension Posts {
         post.imageUrl = dictionary["photoUrl"] as? String
         post.uid = dictionary["uid"] as? String
         post.id = key
+        post.likesCount = dictionary["likesCount"] as? Int
+        post.likes = dictionary["likes"] as? Dictionary<String, Any>
+        
+        if let currentUser = Api.user.CURRENT_USER?.uid {
+            if post.likes != nil {
+                post.isLiked = post.likes![currentUser] != nil
+            }
+        }
         return post
     }
 }

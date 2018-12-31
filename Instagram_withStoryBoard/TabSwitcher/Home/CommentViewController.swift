@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import FirebaseDatabase
-import FirebaseAuth
 
 class CommentViewController: UIViewController, UITableViewDataSource {
     
@@ -24,27 +21,23 @@ class CommentViewController: UIViewController, UITableViewDataSource {
         dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func sendButton(_ sender: Any) {
-        let ref = Database.database().reference()
-        let commentRef = ref.child("comments")
+        let commentRef = Api.comment.COMMENT_REF
         let newCommentId = commentRef.childByAutoId().key
         let newCommentRef = commentRef.child(newCommentId!)
-        guard let currentUser = Auth.auth().currentUser  else {
-            return
-        }
-        let currentId = currentUser.uid
+        
+        let currentId = Api.user.CURRENT_USER?.uid
         newCommentRef.setValue(["uid": currentId, "comment": commentText.text!]) { (error, refs) in
             if error != nil {
-                SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                CustomAlert.showError(withMessage:  (error?.localizedDescription)!)
                 return
             }
             
             //recognize which post has comment
-            let postComment = ref.child("post-comments").child(self.postId).child(newCommentId!)
+            let postComment = Api.post_comment.POST_COMMENT_REF.child(self.postId).child(newCommentId!)
             postComment.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
-                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                    CustomAlert.showError(withMessage: (error?.localizedDescription)!)
                     return
                 }
             })
@@ -70,7 +63,6 @@ class CommentViewController: UIViewController, UITableViewDataSource {
     }
     
     fileprivate func loadComments() {
-        SVProgressHUD.setBackgroundColor(.clear)
         Api.post_comment.POST_COMMENT_REF.child(self.postId).observe(.childAdded) { (snapShot) in
             Api.comment.observe(withKey: snapShot.key, completion: { (newComment) in
                 self.fetchUser(uid: newComment.uid!, completed: {

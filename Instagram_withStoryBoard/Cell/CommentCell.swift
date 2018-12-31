@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import SDWebImage
 
-class CommentCellTableViewCell: UITableViewCell {
-    
+class CommentCell: UITableViewCell {
+  
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var commentText: UILabel!
@@ -25,14 +24,12 @@ class CommentCellTableViewCell: UITableViewCell {
         didSet {
             username.text = user?.username
             if let photoUrlString = user?.profile_image {
-                let photoUrl = URL(string: photoUrlString)
-                self.profileImage.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Profile_Selected"))
+                CacheImage.cacheImageWithPlaceHolder(withUrl: photoUrlString, imageContainer: self.profileImage, placeHolderImage: #imageLiteral(resourceName: "Profile_Selected"))
             }
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 }

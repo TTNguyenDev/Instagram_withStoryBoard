@@ -7,19 +7,15 @@
 //
 
 import UIKit
-import SVProgressHUD
-import FirebaseDatabase
-import FirebaseStorage
-import FirebaseAuth
 
 class Photos: UIViewController {
-    
     var selectedImage: UIImage?
-
+    
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var imagePost: UIImageView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var Share_Label: UIButton!
-   
+    
     @IBAction func cancelButton(_ sender: Any) {
         clean()
     }
@@ -28,51 +24,12 @@ class Photos: UIViewController {
         saveDataBase()
     }
     
-    fileprivate func clean() {
-        imagePost.image = #imageLiteral(resourceName: "Placeholder-image")
-        selectedImage = nil
-        caption.text = ""
-        handlePost()
+    @objc fileprivate func chooseProfileImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
     }
     
-    fileprivate func saveDataBase() {
-        SVProgressHUD.show()
-        let photoIdString = NSUUID().uuidString
-        let storageRef = Storage.storage().reference(forURL: "gs://instagramstoryboard.appspot.com").child("posts").child(photoIdString)
-        let metaDataForImage = StorageMetadata()
-        metaDataForImage.contentType = "image/jpeg"
-        
-        if let profileImg = self.selectedImage {
-            storageRef.putData(profileImg.jpegData(compressionQuality: 0.1)!, metadata: metaDataForImage) { (metaData, error) in
-                if error != nil {
-                    SVProgressHUD.showError(withStatus: error!.localizedDescription)
-                    return
-                }
-                
-                _ = storageRef.downloadURL(completion: { (url, error) in
-                    if error != nil {
-                        SVProgressHUD.showError(withStatus: error!.localizedDescription)
-                        return
-                    }
-                    let profileImageUrl = url?.absoluteString
-                    let ref = Database.database().reference()
-                    let postReference = ref.child("posts")
-                    let newPostId = postReference.childByAutoId().key
-                    let newPostReference = postReference.child(newPostId!)
-                    let uid = Auth.auth().currentUser?.uid
-                    newPostReference.setValue(["photoUrl": profileImageUrl, "caption": self.caption.text!, "uid": uid], withCompletionBlock: { (error, ref) in
-                        if error != nil {
-                            SVProgressHUD.showError(withStatus: error!.localizedDescription)
-                            return
-                        }
-                        SVProgressHUD.showSuccess(withStatus: "Success")
-                        self.clean()
-                    })
-                })
-            }
-        }
-    }
-
     fileprivate func handlePost() {
         if selectedImage != nil {
             Share_Label.isEnabled = true
@@ -91,10 +48,26 @@ class Photos: UIViewController {
         imagePost.isUserInteractionEnabled = true
     }
     
-    @objc fileprivate func chooseProfileImage() {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
+    fileprivate func clean() {
+        imagePost.image = #imageLiteral(resourceName: "Placeholder-image")
+        selectedImage = nil
+        caption.text = ""
+        handlePost()
+    }
+    
+    fileprivate func saveDataBase() {
+        indicator.startAnimating()
+        if let profileImg = self.selectedImage {
+            Api.storage.saveUploadData(image: profileImg.jpegData(compressionQuality: 0.1)!, caption: caption.text) { (error) in
+                CustomAlert.showError(withMessage: error)
+            }
+        }
+        self.indicator.stopAnimating()
+        self.clean()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +77,7 @@ class Photos: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.hidesWhenStopped = true
         tapGestureForUIImageView()
     }
 }

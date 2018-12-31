@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
@@ -23,13 +19,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBAction func SignUp_Button(_ sender: Any) {
-        SVProgressHUD.show()
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                SVProgressHUD.showError(withStatus: error?.localizedDescription)
-                return
-            }
-            SVProgressHUD.dismiss()
+        CustomAlert.stopAnimation()
+        Api.auth.createUser(email: emailTextField.text!, password: passwordTextField.text!, onFail: { (error) in
+            CustomAlert.showError(withMessage: error)
+            return
+        }) {
+            CustomAlert.stopAnimation()
             self.saveDataBase()
             self.performSegue(withIdentifier: "TabSwitcher_id", sender: nil)
         }
@@ -40,31 +35,9 @@ class SignUpViewController: UIViewController {
     }
     
     fileprivate func saveDataBase() {
-        let uid = Auth.auth().currentUser?.uid
-        
-        let StorageRef = Storage.storage().reference(forURL: "gs://instagramstoryboard.appspot.com").child("profile_image").child(uid!)
-        
-        let metaDataForImage = StorageMetadata()
-        metaDataForImage.contentType = "image/jpeg"
-        
         if let profileImg = self.selectedImage {
-            StorageRef.putData(profileImg.jpegData(compressionQuality: 0.1)!, metadata: metaDataForImage) { (metaData, error) in
-                if error != nil {
-                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
-                    return
-                }
-                
-                _ = StorageRef.downloadURL(completion: { (url, error) in
-                    if error != nil {
-                        return
-                    }
-                    let profileImageUrl = url?.absoluteString
-                    let ref = Database.database().reference()
-                    let userRef = ref.child("users")
-                    
-                    let newUserReference = userRef.child(uid!)
-                    newUserReference.setValue(["username": self.nameTextField.text!, "email": self.emailTextField.text!, "profile_image": profileImageUrl])
-                })
+            Api.storage.saveDataForNewUser(image: profileImg.jpegData(compressionQuality: 0.1)!, username: nameTextField.text!, userEmail: emailTextField.text!) { (error) in
+                CustomAlert.showError(withMessage: error)
             }
         }
     }

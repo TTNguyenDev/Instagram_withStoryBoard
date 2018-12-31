@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
-import SVProgressHUD
 
 class Home: UIViewController, UITableViewDataSource {
     
@@ -21,7 +18,6 @@ class Home: UIViewController, UITableViewDataSource {
     
     fileprivate func loadPost() {
         indicator.startAnimating()
-        SVProgressHUD.setBackgroundColor(.clear)
         Api.post.observe { (newPost) in
             self.fetchUser(uid: newPost.uid!, completed: {
                 self.posts.append(newPost)

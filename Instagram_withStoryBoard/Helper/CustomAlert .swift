@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import SVProgressHUD
+
+class CustomAlert {
+    static func showSuccess(withMessage mess: String) {
+        SVProgressHUD.showSuccess(withStatus: mess)
+    }
+    
+    static func showError(withMessage mess: String) {
+        SVProgressHUD.showError(withStatus: mess)
+    }
+    
+    static func loadingAnimation() {
+        SVProgressHUD.show()
+    }
+    
+    static func stopAnimation() {
+        SVProgressHUD.dismiss()
+    }
+    
+    
+}
+
