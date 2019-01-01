@@ -13,6 +13,11 @@ class Account: UIViewController {
     var mPost: [Posts] = []
     
     @IBOutlet var collectionView: UICollectionView!
+    
+    @IBAction func displayAllUserButton(_ sender: Any) {
+        
+    }
+    
     @IBAction func logoutButton(_ sender: Any) {
         Api.auth.signOut(onFail: { (error) in
             CustomAlert.showError(withMessage: error)
@@ -21,8 +26,8 @@ class Account: UIViewController {
         }
     }
     
-    fileprivate func AppendImageArray() -> UInt {
-        return Api.myPost.getPostFromServer(completion: { (post) in
+    fileprivate func fetchPost() {
+        Api.myPost.getPostFromServer(completion: { (post) in
             self.mPost.append(post)
             self.collectionView.reloadData()
         })
@@ -32,7 +37,7 @@ class Account: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        AppendImageArray()        
+        fetchPost()
     }
 }
 

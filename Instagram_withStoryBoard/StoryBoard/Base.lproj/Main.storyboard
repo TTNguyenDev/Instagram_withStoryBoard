@@ -40,12 +40,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-zd-5cc">
-                                <rect key="frame" x="30" y="328" width="354" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="woF-mI-dc1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-zd-5cc">
+                                <rect key="frame" x="30" y="332" width="354" height="76"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -88,9 +85,9 @@
                             <constraint firstItem="UhZ-SS-nlZ" firstAttribute="top" secondItem="lde-nf-hP6" secondAttribute="bottom" constant="20" id="M9x-uu-2PO"/>
                             <constraint firstItem="7Ws-zd-5cc" firstAttribute="leading" secondItem="Lkw-if-2fe" secondAttribute="leading" constant="30" id="SOs-qf-V3d"/>
                             <constraint firstItem="lde-nf-hP6" firstAttribute="centerY" secondItem="Lkw-if-2fe" secondAttribute="centerY" id="V4B-er-8Iu"/>
+                            <constraint firstItem="lde-nf-hP6" firstAttribute="top" secondItem="7Ws-zd-5cc" secondAttribute="bottom" constant="30" id="W75-Nj-cEe"/>
                             <constraint firstItem="UhZ-SS-nlZ" firstAttribute="leading" secondItem="lde-nf-hP6" secondAttribute="leading" id="gkU-sk-vZ7"/>
                             <constraint firstItem="Lkw-if-2fe" firstAttribute="bottom" secondItem="3Cz-I2-srQ" secondAttribute="bottom" constant="10" id="hDV-3x-y6m"/>
-                            <constraint firstItem="lde-nf-hP6" firstAttribute="top" secondItem="7Ws-zd-5cc" secondAttribute="bottom" constant="30" id="juG-ET-fLZ"/>
                             <constraint firstItem="lde-nf-hP6" firstAttribute="centerX" secondItem="Lkw-if-2fe" secondAttribute="centerX" id="lNz-rS-JtH"/>
                             <constraint firstItem="Lkw-if-2fe" firstAttribute="trailing" secondItem="7Ws-zd-5cc" secondAttribute="trailing" constant="30" id="rgi-yh-35V"/>
                             <constraint firstItem="3Cz-I2-srQ" firstAttribute="centerX" secondItem="Lkw-if-2fe" secondAttribute="centerX" id="ryC-Dd-sgJ"/>
@@ -107,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maP-Ud-3ms" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1212" y="-362"/>
+            <point key="canvasLocation" x="-1213.0434782608697" y="-362.27678571428572"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="eWD-f0-2bd">
@@ -167,15 +164,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-vW-d5H">
-                                <rect key="frame" x="30" y="188" width="354" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Xlz-qb-yFB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="62"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-user-male-480" translatesAutoresizingMaskIntoConstraints="NO" id="rja-UT-Jil">
                                 <rect key="frame" x="167" y="288" width="80" height="80"/>
                                 <constraints>
@@ -188,6 +176,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-vW-d5H">
+                                <rect key="frame" x="30" y="190" width="354" height="77"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="60"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -234,6 +228,6 @@
         <image name="icons8-user-male-480" width="360" height="360"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ikU-OE-4qV"/>
+        <segue reference="eiP-QX-2vA"/>
     </inferredMetricsTieBreakers>
 </document>

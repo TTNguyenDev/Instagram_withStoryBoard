@@ -197,7 +197,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="Qe2-7R-dvb">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="hsB-n5-PXb">
+                        <barButtonItem key="leftBarButtonItem" image="follow" id="8ft-2y-WoE">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="displayAllUserButton:" destination="K8d-mY-IFr" id="ks9-Wd-uz7"/>
+                                <segue destination="RUQ-g9-IVt" kind="show" id="tnC-aJ-U9Z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="logout" image="logout" style="plain" id="hsB-n5-PXb">
                             <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logoutButton:" destination="K8d-mY-IFr" id="aDs-G2-J7F"/>
@@ -211,6 +218,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NM5-D4-0jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4205.6000000000004" y="1064.7783251231529"/>
+        </scene>
+        <!--Display All User-->
+        <scene sceneID="eJK-fE-bx4">
+            <objects>
+                <viewController id="RUQ-g9-IVt" customClass="DisplayAllUser" customModule="Instagram_withStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y96-et-gul"/>
+                        <viewControllerLayoutGuide type="bottom" id="su6-qO-TJY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2D5-Qn-6Gg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YU8-4k-bqb">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="118" id="2KO-Pw-IQS" customClass="UserCell" customModule="Instagram_withStoryBoard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="118"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2KO-Pw-IQS" id="gBk-EV-XuR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="117.66666666666667"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blur-wallpapers-55342-6592718" translatesAutoresizingMaskIntoConstraints="NO" id="YeR-Lb-vaL">
+                                                    <rect key="frame" x="15" y="16" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="Pow-AK-CuO"/>
+                                                        <constraint firstAttribute="width" constant="60" id="xK4-u3-pMo"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-Xm-qSR">
+                                                    <rect key="frame" x="90" y="35.666666666666664" width="155" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZX-8o-mpY">
+                                                    <rect key="frame" x="260" y="31" width="100" height="30"/>
+                                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="DzQ-2V-9YW"/>
+                                                        <constraint firstAttribute="height" constant="30" id="GHI-ja-J4b"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <state key="normal" title="Follow">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="followButton:" destination="2KO-Pw-IQS" eventType="touchUpInside" id="l9L-1d-KRk"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YeR-Lb-vaL" secondAttribute="bottom" constant="5" id="KTU-fs-vgC"/>
+                                                <constraint firstItem="YeR-Lb-vaL" firstAttribute="top" secondItem="gBk-EV-XuR" secondAttribute="topMargin" constant="5" id="MPr-1V-D3h"/>
+                                                <constraint firstAttribute="trailing" secondItem="0ZX-8o-mpY" secondAttribute="trailing" constant="15" id="Ppa-99-QkT"/>
+                                                <constraint firstItem="Jnm-Xm-qSR" firstAttribute="leading" secondItem="YeR-Lb-vaL" secondAttribute="trailing" constant="15" id="Q56-l6-4h3"/>
+                                                <constraint firstItem="0ZX-8o-mpY" firstAttribute="leading" secondItem="Jnm-Xm-qSR" secondAttribute="trailing" constant="15" id="W49-bh-knh"/>
+                                                <constraint firstItem="0ZX-8o-mpY" firstAttribute="centerY" secondItem="YeR-Lb-vaL" secondAttribute="centerY" id="hMh-fi-vdZ"/>
+                                                <constraint firstItem="Jnm-Xm-qSR" firstAttribute="centerY" secondItem="YeR-Lb-vaL" secondAttribute="centerY" id="rKm-gn-5hb"/>
+                                                <constraint firstItem="YeR-Lb-vaL" firstAttribute="leading" secondItem="gBk-EV-XuR" secondAttribute="leading" constant="15" id="tOb-tW-WVs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followState" destination="0ZX-8o-mpY" id="soo-Kt-6xU"/>
+                                            <outlet property="profileImage" destination="YeR-Lb-vaL" id="LEY-yu-Uze"/>
+                                            <outlet property="username" destination="Jnm-Xm-qSR" id="zdi-fB-ywo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="su6-qO-TJY" firstAttribute="top" secondItem="YU8-4k-bqb" secondAttribute="bottom" id="6X5-9o-btA"/>
+                            <constraint firstItem="YU8-4k-bqb" firstAttribute="top" secondItem="y96-et-gul" secondAttribute="bottom" id="N6n-N1-DGb"/>
+                            <constraint firstItem="YU8-4k-bqb" firstAttribute="leading" secondItem="2D5-Qn-6Gg" secondAttribute="leading" id="P5U-7i-ukC"/>
+                            <constraint firstAttribute="trailing" secondItem="YU8-4k-bqb" secondAttribute="trailing" id="wq6-HC-IkH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="YU8-4k-bqb" id="acB-qj-EBH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8IO-gQ-LYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4928.8000000000002" y="1064.7783251231529"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9zf-DO-TN2">
@@ -237,5 +342,7 @@
     <resources>
         <image name="Profile_Selected" width="20" height="21"/>
         <image name="blur-wallpapers-55342-6592718" width="1440" height="810"/>
+        <image name="follow" width="48" height="48"/>
+        <image name="logout" width="48" height="48"/>
     </resources>
 </document>

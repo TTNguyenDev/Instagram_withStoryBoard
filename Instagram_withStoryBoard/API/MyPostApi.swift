@@ -17,15 +17,13 @@ class MyPostApi {
         MYPOST_REF.child(currentUser!).observeSingleEvent(of: .value) { (snapshot) in
             Api.post.observePostWithId(id: snapshot.key
                 , completion: { (post) in
-                    print(post)
             })
             
         }
     }
     
-    func getPostFromServer(completion: @escaping (Posts) -> Void) -> UInt {
-        return MYPOST_REF.child(Api.user.CURRENT_USER!.uid).observe(.childAdded) { (snapshot) in
-            print(snapshot.key)
+    func getPostFromServer(completion: @escaping (Posts) -> Void) {
+        MYPOST_REF.child(Api.user.CURRENT_USER!.uid).observe(.childAdded) { (snapshot) in
             Api.post.observePostWithId(id: snapshot.key, completion: { (post) in
                 completion(post)
             })

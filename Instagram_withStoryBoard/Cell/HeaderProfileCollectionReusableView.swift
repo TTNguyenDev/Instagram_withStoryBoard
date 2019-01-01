@@ -12,7 +12,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var userName: UILabel!
     
-    func updateView() {
+    func updateView(){
         Api.user.observeCurrentUser { (user) in
             self.userName.text = user.username
             if let photoUrlString = user.profile_image {

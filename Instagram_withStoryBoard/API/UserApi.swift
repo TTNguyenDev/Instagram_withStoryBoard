@@ -23,19 +23,29 @@ class UserApi {
     func observe(withID id: String,completion: @escaping (Users) -> Void) {
         USER_REF.child(id).observeSingleEvent(of: .value) { (snapShot) in
             if let dict = snapShot.value as? NSDictionary {
-                let user = Users.transformUser(dictionary: dict)
+                let user = Users.transformUser(dictionary: dict, userId: snapShot.key)
                 completion(user)
             }
         }
     }
     
-
     func observeCurrentUser(completion: @escaping (Users) -> Void) {
         let id = Auth.auth().currentUser?.uid
         USER_REF.child(id!).observeSingleEvent(of: .value) { (snapShot) in
             if let dict = snapShot.value as? NSDictionary {
-                let user = Users.transformUser(dictionary: dict)
+                let user = Users.transformUser(dictionary: dict, userId: snapShot.key)
                 completion(user)
+            }
+        }
+    }
+    
+    func observeAllUsers(completion: @escaping (Users) -> Void) {
+        USER_REF.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? NSDictionary {
+                if snapshot.key != self.CURRENT_USER?.uid {
+                    let user = Users.transformUser(dictionary: dict, userId: snapshot.key)
+                    completion(user)
+                }
             }
         }
     }

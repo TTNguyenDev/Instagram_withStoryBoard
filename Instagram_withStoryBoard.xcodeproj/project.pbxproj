@@ -30,6 +30,9 @@
 		B54E4EED21A99606006CE40B /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EEC21A99606006CE40B /* UserApi.swift */; };
 		B54E4EEF21A99878006CE40B /* CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EEE21A99878006CE40B /* CommentApi.swift */; };
 		B54E4EF121A99943006CE40B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E4EF021A99943006CE40B /* Api.swift */; };
+		B57F025221DBB2A40032C293 /* FollowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F025121DBB2A40032C293 /* FollowApi.swift */; };
+		B5A2BA3421DB59DE00EA6E11 /* DisplayAllUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2BA3321DB59DE00EA6E11 /* DisplayAllUser.swift */; };
+		B5A2BA3621DB5A7A00EA6E11 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2BA3521DB5A7A00EA6E11 /* UserCell.swift */; };
 		B5A8BB3721A69921009DB605 /* Switchers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A8BB3621A69921009DB605 /* Switchers.storyboard */; };
 		B5A8BB3921A6CDA2009DB605 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A8BB3821A6CDA2009DB605 /* Home.storyboard */; };
 		B5A8BB3B21A6CDB6009DB605 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A8BB3A21A6CDB6009DB605 /* Discover.storyboard */; };
@@ -73,6 +76,9 @@
 		B54E4EEC21A99606006CE40B /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		B54E4EEE21A99878006CE40B /* CommentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentApi.swift; sourceTree = "<group>"; };
 		B54E4EF021A99943006CE40B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		B57F025121DBB2A40032C293 /* FollowApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowApi.swift; sourceTree = "<group>"; };
+		B5A2BA3321DB59DE00EA6E11 /* DisplayAllUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAllUser.swift; sourceTree = "<group>"; };
+		B5A2BA3521DB5A7A00EA6E11 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B5A8BB3621A69921009DB605 /* Switchers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Switchers.storyboard; sourceTree = "<group>"; };
 		B5A8BB3821A6CDA2009DB605 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B5A8BB3A21A6CDB6009DB605 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
@@ -184,7 +190,7 @@
 				B53ED9B721A6701600C82C2A /* Discover.swift */,
 				B53ED9B921A6702100C82C2A /* Photos.swift */,
 				B53ED9BB21A6704800C82C2A /* Notification.swift */,
-				B53ED9BD21A6705400C82C2A /* Account.swift */,
+				B5A2BA3221DB595000EA6E11 /* Account */,
 			);
 			path = TabSwitcher;
 			sourceTree = "<group>";
@@ -209,8 +215,18 @@
 				B54E4EEE21A99878006CE40B /* CommentApi.swift */,
 				B50617BC21D7625900FCDEA1 /* StorageApi.swift */,
 				B50617BE21D7717100FCDEA1 /* AuthApi.swift */,
+				B57F025121DBB2A40032C293 /* FollowApi.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		B5A2BA3221DB595000EA6E11 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B53ED9BD21A6705400C82C2A /* Account.swift */,
+				B5A2BA3321DB59DE00EA6E11 /* DisplayAllUser.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		B5A8BB4221A6D456009DB605 /* Cell */ = {
@@ -220,6 +236,7 @@
 				B5C2175421A7F5E70020F9BB /* CommentCell.swift */,
 				B51F781F21D606EC006890EA /* HeaderProfileCollectionReusableView.swift */,
 				B50617BA21D74FB700FCDEA1 /* ImageCell.swift */,
+				B5A2BA3521DB5A7A00EA6E11 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -394,6 +411,7 @@
 				B51F782021D606EC006890EA /* HeaderProfileCollectionReusableView.swift in Sources */,
 				B50617C421D77AFD00FCDEA1 /* CacheImage.swift in Sources */,
 				B504116321A653C50052BD51 /* SignInViewController.swift in Sources */,
+				B5A2BA3621DB5A7A00EA6E11 /* UserCell.swift in Sources */,
 				B50617BD21D7625900FCDEA1 /* StorageApi.swift in Sources */,
 				B51F782221D61E1C006890EA /* MyPostApi.swift in Sources */,
 				B50617BB21D74FB700FCDEA1 /* ImageCell.swift in Sources */,
@@ -403,6 +421,7 @@
 				B5C2175721A7F6020020F9BB /* Comment.swift in Sources */,
 				B53ED9BC21A6704800C82C2A /* Notification.swift in Sources */,
 				B5CE6C8921A666CE00132B6F /* Home.swift in Sources */,
+				B57F025221DBB2A40032C293 /* FollowApi.swift in Sources */,
 				B54E4EED21A99606006CE40B /* UserApi.swift in Sources */,
 				B5A8BB4621A6DA24009DB605 /* PostCell.swift in Sources */,
 				B50617C221D7765200FCDEA1 /* CustomAlert .swift in Sources */,
@@ -410,6 +429,7 @@
 				B53ED9BE21A6705400C82C2A /* Account.swift in Sources */,
 				B5C2175321A7ED660020F9BB /* CommentViewController.swift in Sources */,
 				B5CE6C8B21A666F500132B6F /* SignUpViewController.swift in Sources */,
+				B5A2BA3421DB59DE00EA6E11 /* DisplayAllUser.swift in Sources */,
 				B503BD7221AA603000E1D4F0 /* LikeApi.swift in Sources */,
 				B50617BF21D7717100FCDEA1 /* AuthApi.swift in Sources */,
 				B5C2175521A7F5E70020F9BB /* CommentCell.swift in Sources */,
