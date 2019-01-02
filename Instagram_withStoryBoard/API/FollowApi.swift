@@ -14,11 +14,13 @@ class FollowApi {
     let FOLLOWINGS_REF = Database.database().reference().child("followings")
     
     func follow(withUID userId: String) {
+        Api.feed.savePostsAfterFollowUser(userId: userId)
         FOLLOWERS_REF.child(userId).child(Api.user.CURRENT_USER!.uid).setValue(true)
         FOLLOWINGS_REF.child(Api.user.CURRENT_USER!.uid).child(userId).setValue(true)
     }
     
     func unfollow(withUID userId: String) {
+        Api.feed.savePostsAfterUnfollowUser(userId: userId)
         FOLLOWERS_REF.child(userId).child(Api.user.CURRENT_USER!.uid).setValue(NSNull())
         FOLLOWINGS_REF.child(Api.user.CURRENT_USER!.uid).child(userId).setValue(NSNull())
     }
@@ -28,10 +30,8 @@ class FollowApi {
             if let _ = snapshot.value as? NSNull {
                 completion(false)
             } else {
-                 completion(true)
+                completion(true)
             }
         }
-       
     }
-    
 }

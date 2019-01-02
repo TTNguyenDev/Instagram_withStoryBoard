@@ -12,6 +12,7 @@ import FirebaseDatabase
 class PostApi {
     let POST_REF = Database.database().reference().child("posts")
     
+    
     func observe(completion: @escaping (Posts) -> Void) {
         POST_REF.observe(.childAdded) { (snapShot) in
             if let dictionary = snapShot.value as? NSDictionary {

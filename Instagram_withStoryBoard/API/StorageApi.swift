@@ -34,16 +34,14 @@ class StorageApi {
                 let postReference = Api.post.POST_REF
                 let newPostId = postReference.childByAutoId().key
                 let newPostReference = postReference.child(newPostId!)
-                let uid = Api.user.CURRENT_USER?.uid
-                newPostReference.setValue(["photoUrl": profileImageUrl!, "caption": cap, "uid": uid!, "likesCount": 0], withCompletionBlock: { (error, ref) in
+                let uid = Api.user.CURRENT_USER!.uid
+                newPostReference.setValue(["photoUrl": profileImageUrl!, "caption": cap, "uid": uid, "likesCount": 0], withCompletionBlock: { (error, ref) in
                     if error != nil {
                         onFail((error?.localizedDescription)!)
                         return
                     }
-                    let myPostRef = Api.myPost.MYPOST_REF
-                    let myPostId = myPostRef.child(uid!).child(newPostId!)
-                    myPostId.setValue(true)
-                    
+                    Api.myPost.saveYourOwnPostToMyPost(with: newPostId!)
+                    Api.feed.saveYourOwnPostToFeed(with: newPostId!)
                 })
             })
         }

@@ -16,9 +16,22 @@ class Home: UIViewController, UITableViewDataSource {
     var posts = [Posts]()
     var users = [Users]()
     
+    lazy var refresher: UIRefreshControl = {
+        let refresherControl = UIRefreshControl()
+        refresherControl.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        refresherControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        return refresherControl
+    }()
+    
+    
+    @objc func reloadData() {
+        self.refresher.endRefreshing()
+        
+    }
+    
     fileprivate func loadPost() {
         indicator.startAnimating()
-        Api.post.observe { (newPost) in
+        Api.feed.loadPostId { (newPost) in
             self.fetchUser(uid: newPost.uid!, completed: {
                 self.posts.append(newPost)
                 self.indicator.stopAnimating()
@@ -67,6 +80,7 @@ class Home: UIViewController, UITableViewDataSource {
         setupTableView()
         indicator.hidesWhenStopped = true
         loadPost()
+        tableView1.refreshControl = refresher
     }
 }
 

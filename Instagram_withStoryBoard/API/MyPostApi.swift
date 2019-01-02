@@ -29,4 +29,8 @@ class MyPostApi {
             })
         }
     }
+    
+    func saveYourOwnPostToMyPost(with postId: String) {
+        MYPOST_REF.child(Api.user.CURRENT_USER!.uid).child(postId).setValue(true)
+    }
 }
