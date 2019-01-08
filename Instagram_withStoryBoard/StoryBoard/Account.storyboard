@@ -302,10 +302,11 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="su6-qO-TJY" firstAttribute="top" secondItem="YU8-4k-bqb" secondAttribute="bottom" id="6X5-9o-btA"/>
-                            <constraint firstItem="YU8-4k-bqb" firstAttribute="top" secondItem="y96-et-gul" secondAttribute="bottom" id="N6n-N1-DGb"/>
+                            <constraint firstItem="su6-qO-TJY" firstAttribute="top" secondItem="YU8-4k-bqb" secondAttribute="bottom" id="Eaj-Nb-Uzn"/>
                             <constraint firstItem="YU8-4k-bqb" firstAttribute="leading" secondItem="2D5-Qn-6Gg" secondAttribute="leading" id="P5U-7i-ukC"/>
+                            <constraint firstItem="YU8-4k-bqb" firstAttribute="top" secondItem="y96-et-gul" secondAttribute="bottom" id="qoG-7l-ggN"/>
                             <constraint firstAttribute="trailing" secondItem="YU8-4k-bqb" secondAttribute="trailing" id="wq6-HC-IkH"/>
                         </constraints>
                     </view>
@@ -328,6 +329,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hUL-Je-F6N">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

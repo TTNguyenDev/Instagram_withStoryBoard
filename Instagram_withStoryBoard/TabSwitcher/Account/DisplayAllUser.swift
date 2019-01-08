@@ -14,8 +14,14 @@ class DisplayAllUser: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    fileprivate func fetchUsers() {
-        Api.user.observeAllUsers { (newUser) in
+    fileprivate func fetchUsers(value: String) {
+//        Api.user.observeAllUsers { (newUser) in
+//            self.users.append(newUser)
+//            self.tableView.reloadData()
+//        }
+        users.removeAll()
+        tableView.reloadData()
+        Api.search.searchByString(searchValue: value) { (newUser) in
             self.users.append(newUser)
             self.tableView.reloadData()
         }
@@ -24,8 +30,39 @@ class DisplayAllUser: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        fetchUsers()
+        fetchUsers(value: "")
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.searchBar.placeholder = "Search Users"
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
+}
+
+extension DisplayAllUser: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        fetchUsers(value: searchText)
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(searchBar.text!)
+    }
+    
+    
+    
+    
+    
 }
 
 extension DisplayAllUser: UITableViewDataSource {
@@ -39,5 +76,4 @@ extension DisplayAllUser: UITableViewDataSource {
         cell.user = user
         return cell
     }
-    
 }

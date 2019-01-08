@@ -18,5 +18,6 @@ struct Api {
     static let auth = AuthApi()
     static let follow = FollowApi()
     static let feed = FeedApi()
+    static let search = SearchApi()
 }
 

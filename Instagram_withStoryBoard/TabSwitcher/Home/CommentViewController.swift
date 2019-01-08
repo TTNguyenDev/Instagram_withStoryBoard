@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CommentViewController: UIViewController, UITableViewDataSource {
+class CommentViewController: UIViewController {
     
     var comments = [Comments]()
     var users = [Users]()
     var postId: String!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var tableView1: UITableView!
     @IBOutlet weak var commentText: UITextField!
+    
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -30,19 +30,6 @@ class CommentViewController: UIViewController, UITableViewDataSource {
     
     fileprivate func empty() {
         commentText.text = ""
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
-        let comment = comments[indexPath.row]
-        let user = users[indexPath.row]
-        cell.comments = comment
-        cell.user = user
-        return cell
     }
     
     fileprivate func loadComments() {
@@ -99,5 +86,20 @@ class CommentViewController: UIViewController, UITableViewDataSource {
         setupTableView()
         loadComments()
         setupNotification()
+    }
+}
+
+extension CommentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
+        let comment = comments[indexPath.row]
+        let user = users[indexPath.row]
+        cell.comments = comment
+        cell.user = user
+        return cell
     }
 }
