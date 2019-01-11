@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class Home: UIViewController{
+class Home: UIViewController, NVActivityIndicatorViewable {
     
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView1: UITableView!
     
     var posts = [Posts]()
     var users = [Users]()
     
     fileprivate func loadPost() {
-        indicator.startAnimating()
-        Api.feed.loadPostId { (newPost) in
+        let size = CGSize(width: 50, height: 50)
+        let indicatorType = NVActivityIndicatorType.init(rawValue: 26)
+        
+        startAnimating(size, message: "Loading...", messageFont: UIFont.systemFont(ofSize: 15), type: indicatorType, color: .orange, padding: 2, displayTimeThreshold: 2, minimumDisplayTime: 2, backgroundColor: .white, textColor: .orange, fadeInAnimation: nil)
+        
+        Api.feed.loadPostId(completion: { (newPost) in
             self.fetchUser(uid: newPost.uid!, completed: {
                 self.posts.append(newPost)
-                self.indicator.stopAnimating()
+                self.stopAnimating()
                 self.tableView1.reloadData()
             })
+        }) {
+            self.stopAnimating()
+            CustomAlert.showAlert(withMessage: "No post to show")
         }
     }
     
@@ -52,12 +59,12 @@ class Home: UIViewController{
         posts.removeAll()
         users.removeAll()
         loadPost()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        indicator.hidesWhenStopped = true
     }
 }
 

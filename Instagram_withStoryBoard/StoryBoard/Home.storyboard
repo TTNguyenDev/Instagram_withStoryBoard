@@ -146,24 +146,18 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8kr-yB-cA4">
-                                <rect key="frame" x="197" y="465" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EAB-fk-EXv" firstAttribute="leading" secondItem="eyK-RP-I9v" secondAttribute="leading" id="ACD-G1-xM5"/>
                             <constraint firstItem="eyK-RP-I9v" firstAttribute="bottom" secondItem="EAB-fk-EXv" secondAttribute="bottom" id="BHc-Ri-vEH"/>
                             <constraint firstItem="eyK-RP-I9v" firstAttribute="trailing" secondItem="EAB-fk-EXv" secondAttribute="trailing" id="NrC-fc-7Zc"/>
-                            <constraint firstItem="8kr-yB-cA4" firstAttribute="centerY" secondItem="EAB-fk-EXv" secondAttribute="centerY" id="lyr-IL-akL"/>
-                            <constraint firstItem="8kr-yB-cA4" firstAttribute="centerX" secondItem="EAB-fk-EXv" secondAttribute="centerX" id="oc3-Zd-PCM"/>
                             <constraint firstItem="EAB-fk-EXv" firstAttribute="top" secondItem="eyK-RP-I9v" secondAttribute="top" id="wEi-Fn-ZvL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eyK-RP-I9v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="v9J-vg-YT6"/>
                     <connections>
-                        <outlet property="indicator" destination="8kr-yB-cA4" id="F2Y-5N-xdt"/>
                         <outlet property="tableView1" destination="EAB-fk-EXv" id="cyH-5B-wZJ"/>
                         <segue destination="LVd-V5-XeV" kind="presentation" identifier="commentSegue" id="i97-ti-b5v"/>
                     </connections>

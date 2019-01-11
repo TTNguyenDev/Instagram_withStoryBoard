@@ -15,16 +15,16 @@ class DisplayAllUser: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     fileprivate func fetchUsers(value: String) {
-//        Api.user.observeAllUsers { (newUser) in
-//            self.users.append(newUser)
-//            self.tableView.reloadData()
-//        }
-        users.removeAll()
-        tableView.reloadData()
-        Api.search.searchByString(searchValue: value) { (newUser) in
+        Api.user.observeAllUsers { (newUser) in
             self.users.append(newUser)
             self.tableView.reloadData()
         }
+//        users.removeAll()
+//        tableView.reloadData()
+//        Api.search.searchByString(searchValue: value) { (newUser) in
+//            self.users.append(newUser)
+//            self.tableView.reloadData()
+//        }
     }
     
     override func viewDidLoad() {

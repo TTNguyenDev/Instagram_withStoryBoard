@@ -36,7 +36,7 @@ class FeedApi {
         }
     }
     
-    func loadPostId(completion: @escaping (Posts) -> Void) {
+    func loadPostId(completion: @escaping (Posts) -> Void, onFail: @escaping () -> Void) {
         FEED_REF.child(Api.user.CURRENT_USER!.uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? NSDictionary {
                 for key in dict.allKeys {
@@ -44,6 +44,8 @@ class FeedApi {
                        completion(newPost)
                     })
                 }
+            } else {
+                onFail()
             }
         }
     }

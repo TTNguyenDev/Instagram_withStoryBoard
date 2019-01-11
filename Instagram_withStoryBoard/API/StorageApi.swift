@@ -12,7 +12,7 @@ import FirebaseStorage
 class StorageApi {
     let STORAGE_REF = Storage.storage().reference()
     
-    func saveUploadData(image: Data, caption cap: String,  onFail: @escaping (String) -> Void ) {
+    func saveUploadData(image: Data, caption cap: String, onFail: @escaping (String) -> Void, onSuccess: @escaping () -> Void) {
         let photoIdString = NSUUID().uuidString
         
         let storageRef = STORAGE_REF.child("posts").child(photoIdString)
@@ -42,6 +42,7 @@ class StorageApi {
                     }
                     Api.myPost.saveYourOwnPostToMyPost(with: newPostId!)
                     Api.feed.saveYourOwnPostToFeed(with: newPostId!)
+                    onSuccess()
                 })
             })
         }

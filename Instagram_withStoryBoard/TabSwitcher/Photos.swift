@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class Photos: UIViewController {
+class Photos: UIViewController, NVActivityIndicatorViewable {
     var selectedImage: UIImage?
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -56,14 +57,21 @@ class Photos: UIViewController {
     }
     
     fileprivate func saveDataBase() {
-        indicator.startAnimating()
+        let size = CGSize(width: 50, height: 50)
+        let indicatorType = NVActivityIndicatorType.init(rawValue: 26)
+       startAnimating(size, message: "Loading...", messageFont: UIFont.systemFont(ofSize: 15), type: indicatorType, color: .orange, padding: 2, displayTimeThreshold: 2, minimumDisplayTime: 2, backgroundColor: .white, textColor: .orange, fadeInAnimation: nil)
+        
         if let profileImg = self.selectedImage {
-            Api.storage.saveUploadData(image: profileImg.jpegData(compressionQuality: 0.1)!, caption: caption.text) { (error) in
+            Api.storage.saveUploadData(image: profileImg.jpegData(compressionQuality: 0.1)!, caption: caption.text, onFail: { (error) in
                 CustomAlert.showError(withMessage: error)
+            }) {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Successful")
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.stopAnimating(nil)
+                }
             }
+            self.clean()
         }
-        self.indicator.stopAnimating()
-        self.clean()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,7 +85,6 @@ class Photos: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indicator.hidesWhenStopped = true
         tapGestureForUIImageView()
     }
 }
